@@ -47,6 +47,10 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
             <div className="flex gap-2 flex-wrap">
                 {Object.keys(THEMES).map((key) => {
                     const themeOption = THEMES[key];
+                    // Use the 2048 tile color as the preview color, or fallback to button bg
+                    const bgClass = themeOption.tileColors[2048] || themeOption.buttonBg;
+                    const isSelected = currentTheme.name === themeOption.name;
+                    
                     return (
                         <button
                             key={key}
@@ -54,8 +58,8 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
                                 e.stopPropagation();
                                 setTheme(themeOption);
                             }}
-                            className={`w-8 h-8 rounded-full border-2 ${currentTheme.name === themeOption.name ? 'border-white scale-110 shadow-lg' : 'border-transparent opacity-70 hover:opacity-100'} transition-all`}
-                            style={{ backgroundColor: themeOption.tileColors[2048] || themeOption.buttonBg }}
+                            // Apply bgClass in className, not style
+                            className={`w-8 h-8 rounded-full border-2 transition-all ${bgClass} ${isSelected ? 'border-white scale-110 shadow-lg' : 'border-transparent opacity-70 hover:opacity-100'}`}
                             title={themeOption.name}
                         />
                     )

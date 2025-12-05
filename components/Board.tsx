@@ -27,10 +27,7 @@ export const Board: React.FC<BoardProps> = ({
   const gridCells = Array(GRID_SIZE * GRID_SIZE).fill(0);
 
   return (
-    <div className="relative w-full flex items-center justify-center">
-      <div 
-        className={`relative w-full aspect-square rounded-xl md:rounded-2xl p-1 md:p-2 shadow-inner ${theme.gridBg}`}
-      >
+    <div className={`relative w-full h-full rounded-xl md:rounded-2xl p-1 md:p-2 shadow-inner ${theme.gridBg}`}>
         {/* Background Grid - No Gap, use Padding to match Tile component */}
         <div className="grid grid-cols-4 grid-rows-4 w-full h-full">
           {gridCells.map((_, i) => (
@@ -77,6 +74,5 @@ export const Board: React.FC<BoardProps> = ({
           </div>
         )}
       </div>
-    </div>
   );
 };
