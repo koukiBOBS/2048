@@ -143,13 +143,13 @@ function App() {
 
         {/* Right/Bottom Column: Board */}
         {/* 
-            Fixed: Added 'aspect-square' back to enforce square ratio in portrait mode.
-            portrait:max-w-[65vh] prevents it from being too tall on short screens.
-            landscape:h-[85vh] sets height in landscape, and aspect-square sets width.
+            Board container constraints:
+            Portrait: Width drives size (w-full). Height is determined by Board's aspect-square.
+            Landscape: Height drives size (h-[85vh]). Width is determined by aspect-square.
         */}
         <div 
             ref={boardRef}
-            className="relative shrink-0 w-full aspect-square max-w-[500px] portrait:max-w-[65vh] landscape:h-[85vh] landscape:w-auto landscape:aspect-square landscape:max-w-none landscape:max-h-[90vw]"
+            className="relative shrink-0 w-full max-w-[500px] portrait:max-w-[65vh] landscape:h-[85vh] landscape:w-auto landscape:aspect-square landscape:max-w-none landscape:max-h-[90vw]"
         >
           <Board 
             tiles={gameState.tiles} 
